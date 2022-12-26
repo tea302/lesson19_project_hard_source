@@ -21,15 +21,14 @@ class UserService:
         return self.dao.create(user_d)
 
     def update(self, user_d):
-        user_d["password"] = self.make_password_hash(user_d.get("password"))
         self.dao.update(user_d)
         return self.dao
 
     def delete(self, rid):
         self.dao.delete(rid)
 
-    def get_by_username(self, username):
-        return self.dao.get_by_username(username)
+    def get_by_email(self, email):
+        return self.dao.get_by_email(email)
 
     def make_password_hash(self, password):
         return base64.b64encode(hashlib.pbkdf2_hmac(

@@ -14,9 +14,9 @@ class MovieService:
         elif filters.get("genre_id") is not None:
             movies = self.dao.get_by_genre_id(filters.get("genre_id"))
         elif filters.get("year") is not None:
-            movies = self.dao.get_by_year(filters.get("year"))
+            movies = self.dao.get_all(filters.get("year"))
         else:
-            movies = self.dao.get_all()
+            movies = self.dao.get_all(filters)
         return movies
 
     def create(self, movie_d):
